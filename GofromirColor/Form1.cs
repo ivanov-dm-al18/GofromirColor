@@ -403,6 +403,7 @@ namespace GofromirColor
 
         private async void btnCalculate_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear(); // Очистка ListBox перед выводом новых данных
 
             if (txtGRPanton.Text == "")
             {
