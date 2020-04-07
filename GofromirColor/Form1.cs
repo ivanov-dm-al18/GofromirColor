@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.CodeDom;   // Для удаления
+using System.Collections; // Для удления
+
+
 
 namespace GofromirColor
 {
@@ -25,6 +29,8 @@ namespace GofromirColor
 
         private async void Form1_Load(object sender, EventArgs e)
         {
+            textBox1.Text = ""; // Для удаления
+
             // Текстовые поля с отображением цвета не доступны для работы. 11 шт.
             textBox14.Enabled = false;
             textBox15.Enabled = false;
