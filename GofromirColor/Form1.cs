@@ -8,16 +8,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;                // Добавляем для возможности печати
 
 // Удалено!
 
 namespace GofromirColor
 {
-
     public partial class Form1 : Form
     {
-        SqlConnection sqlConnection; // Для подключения к БД. Обьект обьявляем как поле класса  /*
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\д\source\repos\GofromirColor\GofromirColor\Properties\Database1.mdf;Integrated Security=True";
+        private StringReader myReader;      //  Добавляем для возможности печати
+
+
+
+      protected void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs ev)
+ {
+      float linesPerPage = 0;
+      float yPosition = 0;
+      int count = 0;
+      float leftMargin = ev.MarginBounds.Left;
+      float topMargin = ev.MarginBounds.Top;
+      string line = null;
+      Font printFont = this.listBox1.Font;
+      SolidBrush myBrush = new SolidBrush(Color.Black);
+ 
+     // Work out the number of lines per page, using the MarginBounds. - Вычисляем количество строк на странице, используя MarginBounds
+      linesPerPage = ev.MarginBounds.Height / printFont.GetHeight(ev.Graphics);
+ 
+     // Iterate over the string using the StringReader, printing each line. - Итерация над строкой с помощью StringReader, печатая каждую строку.
+      while (count<linesPerPage && ((line = myReader.ReadLine()) != null))
+     {
+         // calculate the next line position based on - Рассчитать следующую позицию строки на основе высоты шрифта в соответствии с печатающим устройством
+         // the height of the font according to the printing device
+         yPosition = topMargin + (count* printFont.GetHeight(ev.Graphics));
+ 
+         // draw the next line in the rich edit control - Нарисуйте следующую линию в элементе управления редактирования Rich
+  
+         ev.Graphics.DrawString(line, printFont, myBrush, leftMargin, yPosition, new StringFormat());
+         count++;
+     }
+ 
+     // If there are more lines, print another page. - При наличии других строк распечатайте другую страницу.
+     if (line != null)
+         ev.HasMorePages = true;
+     else
+         ev.HasMorePages = false;
+ 
+     myBrush.Dispose();
+ }
+
+
+
+
+SqlConnection sqlConnection; // Для подключения к БД. Обьект обьявляем как поле класса  /*
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ida\Source\Repos\GitHub\GofromirColor\Properties\Database1.mdf;Integrated Security=True";
 
         public Form1()
         {
@@ -529,6 +572,22 @@ namespace GofromirColor
                 if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)     // Чтобы не потерять данные при выходе. Проверяем открыто ли соединение и закрываем его
                     sqlConnection.Close();
             }
+        }
+
+        private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                 printDialog1.Document = printDocument1;
+                 string strText = "";
+                 foreach (object x in listBox1.Items)
+                     {
+                         strText = strText + x.ToString() + "\n";
+                     }
+            
+                 myReader = new StringReader(strText);
+                     if (printDialog1.ShowDialog() == DialogResult.OK)
+                         {
+                             this.printDocument1.Print();
+                         }
         }
     }
 
