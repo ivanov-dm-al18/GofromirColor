@@ -18,9 +18,12 @@ namespace GofromirColor
     {
         private StringReader myReader;      //  Добавляем для возможности печати
 
+        public bool tf_listbox = false; 
 
 
-      protected void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs ev)
+
+
+        protected void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs ev)
  {
       float linesPerPage = 0;
       float yPosition = 0;
@@ -58,8 +61,8 @@ namespace GofromirColor
 
 
 
-
-SqlConnection sqlConnection; // Для подключения к БД. Обьект обьявляем как поле класса  /*
+        
+        SqlConnection sqlConnection; // Для подключения к БД. Обьект обьявляем как поле класса  /*
         string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ida\Source\Repos\GitHub\GofromirColor\Properties\Database1.mdf;Integrated Security=True";
 
         public Form1()
@@ -69,6 +72,8 @@ SqlConnection sqlConnection; // Для подключения к БД. Обье�
 
         private async void Form1_Load(object sender, EventArgs e)
         {
+            lbl_listbox1.Visible = false;
+
             // Текстовые поля с отображением цвета не доступны для работы. 11 шт.
             textBox14.Enabled = false;
             textBox15.Enabled = false;
@@ -143,6 +148,7 @@ SqlConnection sqlConnection; // Для подключения к БД. Обье�
 
         private async void button1_Click(object sender, EventArgs e)  // Сохранить асинхронно
         {
+            
             // Cумма textBox1-12, 21. Должно быть 100%.
             float summa = (float)Convert.ToDouble(textBox1.Text) + (float)Convert.ToDouble(textBox2.Text) + (float)Convert.ToDouble(textBox3.Text) + (float)Convert.ToDouble(textBox4.Text) + (float)Convert.ToDouble(textBox5.Text) + (float)Convert.ToDouble(textBox6.Text) + (float)Convert.ToDouble(textBox7.Text) + (float)Convert.ToDouble(textBox8.Text) + (float)Convert.ToDouble(textBox9.Text) + (float)Convert.ToDouble(textBox10.Text) + (float)Convert.ToDouble(textBox11.Text) + (float)Convert.ToDouble(textBox12.Text) + (float)Convert.ToDouble(textBox21.Text);
             //textBox26.Text = Convert.ToString(summa);           
@@ -379,15 +385,18 @@ SqlConnection sqlConnection; // Для подключения к БД. Обье�
             }
             return;
         }
-        // КОНЕЦ. ПРОВЕРКА 14 ПОЛЕЙ НА ТО, ЧЧТО ВВЕДЕНЫ ТОЛЬКО ЦИФРЫ С ПЛАВАЮЩЕЙ ЗАПЯТОЙ + 28текст - вес, кг
+        // КОНЕЦ. ПРОВЕРКА 14 ПОЛЕЙ НА ТО, ЧТО ВВЕДЕНЫ ТОЛЬКО ЦИФРЫ С ПЛАВАЮЩЕЙ ЗАПЯТОЙ + 28текст - вес, кг
 
 
 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            listBox1.Items.Add("Выберите пантон:");
-            listBox1.Items.Add("");
+            lbl_listbox1.Visible = true;
+            lbl_listbox1.Text = "Выберите пантон:";
+            
+            tf_listbox = true;
+
 
             if (txtGRPanton.Text == "")
             {
@@ -440,12 +449,15 @@ SqlConnection sqlConnection; // Для подключения к БД. Обье�
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtGRPanton.Text = listBox1.SelectedItem.ToString();
+        {            
+           if (tf_listbox)  //   Если f_listbox = false, то строку выполнения пропускаем  
+                txtGRPanton.Text = listBox1.SelectedItem.ToString();
         }
 
         private async void btnCalculate_Click(object sender, EventArgs e)
         {
+            tf_listbox = false;
+            lbl_listbox1.Text = "Рецепт:";
             listBox1.Items.Clear(); // Очистка ListBox перед выводом новых данных
 
             if (txtGRPanton.Text == "")
