@@ -63,7 +63,7 @@ namespace GofromirColor
 
         
         SqlConnection sqlConnection; // Для подключения к БД. Обьект обьявляем как поле класса  /*
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\д\source\repos\GofromirColor\GofromirColor\col1.mdf;Integrated Security=True";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ida\Source\Repos\GitHub\GofromirColor\Properties\col1.mdf;Integrated Security=True";
 
         public Form1()
         {
@@ -413,9 +413,6 @@ namespace GofromirColor
                 SqlDataReader sqlReader = null; // SQLDataReader позволяет получать таблицу в таблицном виде
                 SqlCommand command = new SqlCommand("SELECT [Color] FROM [Colors$] WHERE [Color] LIKE '%' + @a + '%'", sqlConnection);    // Выбираем все из Colors, sqlConnection - для определения куда отпавлять запрос
                 command.Parameters.AddWithValue("a", txtGRPanton.Text);
-                // Выборка по 1 нужной строке
-                // SqlCommand command = new SqlCommand("SELECT * FROM [Products] WHERE [Name]=@Name", sqlConnection);    // Выбираем все из Products, sqlConnection - для определения куда отпавлять запрос
-                // command.Parameters.AddWithValue("Name", textBox1.Text); // Выбираем из таблицы только строку в которой Name=молоко - Введенное значение в textBox1.Text
 
                 try
                 {
@@ -475,8 +472,10 @@ namespace GofromirColor
 
                 await sqlConnection.OpenAsync();    // Открываем БД в асинхронном режиме
                 SqlDataReader sqlReader = null; // SQLDataReader позволяет получать таблицу в таблицном виде
-                SqlCommand command = new SqlCommand("SELECT * FROM [Colors$] WHERE [Color]=@Color", sqlConnection);    // Выбираем все из Colors, sqlConnection - для определения куда отпавлять запрос
-                command.Parameters.AddWithValue("Color", txtGRPanton.Text);
+                                              
+                SqlCommand command = new SqlCommand("SELECT * FROM [Colors$] WHERE [Color]=@Color", sqlConnection);    // Выбираем все из Colors, sqlConnection - для определения куда отпавлять запрос                
+                command.Parameters.AddWithValue("Color", txtGRPanton.Text); 
+                
                 // Выборка по 1 нужной строке
                 // SqlCommand command = new SqlCommand("SELECT * FROM [Products] WHERE [Name]=@Name", sqlConnection);    // Выбираем все из Products, sqlConnection - для определения куда отпавлять запрос
                 // command.Parameters.AddWithValue("Name", textBox1.Text); // Выбираем из таблицы только строку в которой Name=молоко - Введенное значение в textBox1.Text
@@ -488,8 +487,9 @@ namespace GofromirColor
                     {
                         //float f_test = sqlReader.GetFloat(4);   // ExtenderProc - 4 колонка. Эксперимент с получение дробной части.
                         //f_test = f_test * Convert.ToSingle(textBox28.Text);
-
-                        listBox1.Items.Add("Рецепт изготовления " + txtGRPanton.Text  + " на " + textBox28.Text + " кг.");
+                                                                                                                     
+                        
+                        listBox1.Items.Add("Рецепт изготовления " + txtGRPanton.Text  + " на " + textBox28.Text + " кг.");                       
                         listBox1.Items.Add("");
                         listBox1.Items.Add("Рецепт - " + Convert.ToString(sqlReader.GetValue(2)));      // По белому/ По бурому
                         listBox1.Items.Add("");
@@ -525,7 +525,23 @@ namespace GofromirColor
                             listBox1.Items.Add("Вода - " + Convert.ToString(sqlReader.GetFloat(16) / 100 * Convert.ToSingle(textBox28.Text)) + " кг");
                         listBox1.Items.Add("");
                         listBox1.Items.Add("Заявленная вязкость - " + Convert.ToString(sqlReader.GetFloat(17)) + "с");
-               
+
+                        /*
+                        //  Проверка 100%
+                        float summa;
+                        summa = sqlReader.GetFloat(4) + sqlReader.GetFloat(5) + sqlReader.GetFloat(6) + sqlReader.GetFloat(7) + sqlReader.GetFloat(8) + sqlReader.GetFloat(9) + sqlReader.GetFloat(10) + sqlReader.GetFloat(11) + sqlReader.GetFloat(12) + sqlReader.GetFloat(13) + sqlReader.GetFloat(14) + sqlReader.GetFloat(15) + sqlReader.GetFloat(16);
+
+                        if (summa!=100)
+                        { 
+                        listBox1.Items.Add("Рецепт изготовления " + Convert.ToString(sqlReader.GetValue(1)) + " на " + textBox28.Text + " кг.");
+                        listBox1.Items.Add("Сумма компонентов равна - " + Convert.ToString(summa));
+                        listBox1.Items.Add("");
+                        }
+                        */
+
+
+
+
                     }
 
 
