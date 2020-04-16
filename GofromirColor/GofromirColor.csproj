@@ -95,13 +95,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\col1.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Properties\col1_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>col1.mdf</DependentUpon>
-    </Content>
     <Content Include="Properties\Database1.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
