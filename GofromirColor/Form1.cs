@@ -63,7 +63,7 @@ namespace GofromirColor
 
         
         SqlConnection sqlConnection; // Для подключения к БД. Обьект обьявляем как поле класса  /*
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ida\Source\Repos\GitHub\GofromirColor\Properties\col1.mdf;Integrated Security=True";
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\д\source\repos\GofromirColor\GofromirColor\Properties\col1.mdf;Integrated Security=True";
 
         public Form1()
         {
@@ -106,7 +106,7 @@ namespace GofromirColor
 
             await sqlConnection.OpenAsync();    // Открываем БД в асинхронном режиме
             SqlDataReader sqlReader = null; // SQLDataReader позволяет получать таблицу в таблицном виде
-            SqlCommand command = new SqlCommand("SELECT * FROM [Colors$]", sqlConnection);    // Выбираем все из Colors, sqlConnection - для определения куда отпавлять запрос
+            SqlCommand command = new SqlCommand("SELECT * FROM [Colors]", sqlConnection);    // Выбираем все из Colors, sqlConnection - для определения куда отпавлять запрос
 
             // Выборка по 1 нужной строке
             // SqlCommand command = new SqlCommand("SELECT * FROM [Products] WHERE [Name]=@Name", sqlConnection);    // Выбираем все из Products, sqlConnection - для определения куда отпавлять запрос
@@ -175,7 +175,7 @@ namespace GofromirColor
                 //SqlConnection sqlConnection; обьявлено в начале
                 sqlConnection = new SqlConnection(connectionString);    // Устанавливаем соединение
                 await sqlConnection.OpenAsync();    // Открываем БД в асинхронном режиме
-                SqlCommand command = new SqlCommand("INSERT INTO [Colors$] (Color, ExtenderProc, YellowProc, RedProc, RubinProc, RadominProc, OrangeProc, PinkProc, VioletProc, BlueProc, GreenProc, BlackProc, WhiteProc, Water, Viscosity, Extender, WhiteBlack) " +
+                SqlCommand command = new SqlCommand("INSERT INTO [Colors] (Color, ExtenderProc, YellowProc, RedProc, RubinProc, RadominProc, OrangeProc, PinkProc, VioletProc, BlueProc, GreenProc, BlackProc, WhiteProc, Water, Viscosity, Extender, WhiteBlack) " +
                                                     "VALUES (@Color, @ExtenderProc, @YellowProc, @RedProc, @RubinProc, @RadominProc, @OrangeProc, @PinkProc, @VioletProc, @BlueProc, @GreenProc, @BlackProc, @WhiteProc, @Water, @Viscosity, @Extender, @WhiteBlack)", sqlConnection);
                 command.Parameters.AddWithValue("Color", textBox13.Text);   // Добавить со значением Color из textBox13.text
                 command.Parameters.AddWithValue("ExtenderProc", (float)Convert.ToDouble(textBox21.Text));
@@ -411,7 +411,7 @@ namespace GofromirColor
 
                 await sqlConnection.OpenAsync();    // Открываем БД в асинхронном режиме
                 SqlDataReader sqlReader = null; // SQLDataReader позволяет получать таблицу в таблицном виде
-                SqlCommand command = new SqlCommand("SELECT [Color] FROM [Colors$] WHERE [Color] LIKE '%' + @a + '%'", sqlConnection);    // Выбираем все из Colors, sqlConnection - для определения куда отпавлять запрос
+                SqlCommand command = new SqlCommand("SELECT [Color] FROM [Colors] WHERE [Color] LIKE '%' + @a + '%'", sqlConnection);    // Выбираем все из Colors, sqlConnection - для определения куда отпавлять запрос
                 command.Parameters.AddWithValue("a", txtGRPanton.Text);
 
                 try
@@ -473,7 +473,7 @@ namespace GofromirColor
                 await sqlConnection.OpenAsync();    // Открываем БД в асинхронном режиме
                 SqlDataReader sqlReader = null; // SQLDataReader позволяет получать таблицу в таблицном виде
                                               
-                SqlCommand command = new SqlCommand("SELECT * FROM [Colors$] WHERE [Color]=@Color", sqlConnection);    // Выбираем все из Colors, sqlConnection - для определения куда отпавлять запрос                
+                SqlCommand command = new SqlCommand("SELECT * FROM [Colors] WHERE [Color]=@Color", sqlConnection);    // Выбираем все из Colors, sqlConnection - для определения куда отпавлять запрос                
                 command.Parameters.AddWithValue("Color", txtGRPanton.Text); 
                 
                 // Выборка по 1 нужной строке
@@ -566,13 +566,14 @@ namespace GofromirColor
 
         private async void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedIndex == 0) // Вкладка "Готовить рецепт"
+            if (tabControl1.SelectedIndex == 2) tabControl1.SelectedIndex = 1; // Не пускаем в раздел
+                if (tabControl1.SelectedIndex == 0) // Вкладка "Готовить рецепт"
             {
                 sqlConnection = new SqlConnection(connectionString);    // Устанавливаем соединение
 
                 await sqlConnection.OpenAsync();    // Открываем БД в асинхронном режиме
                 SqlDataReader sqlReader = null; // SQLDataReader позволяет получать таблицу в таблицном виде
-                SqlCommand command = new SqlCommand("SELECT * FROM [Colors$]", sqlConnection);    // Выбираем все из Colors, sqlConnection - для определения куда отпавлять запрос
+                SqlCommand command = new SqlCommand("SELECT * FROM [Colors]", sqlConnection);    // Выбираем все из Colors, sqlConnection - для определения куда отпавлять запрос
                 // Создаем коллекцию
                 AutoCompleteStringCollection MyCollection = new AutoCompleteStringCollection();
                 
