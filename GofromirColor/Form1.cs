@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;                // Добавляем для возможности печати
+using System.Configuration;     // Для SQL connectionstring подключение через config
 
 // Удалено!
 
@@ -63,7 +64,16 @@ namespace GofromirColor
 
         
         SqlConnection sqlConnection; // Для подключения к БД. Обьект обьявляем как поле класса  /*
-        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\д\source\repos\GofromirColor\GofromirColor\Properties\col1.mdf;Integrated Security=True";
+
+        // 3-й варинат подключения + App.config
+        string connectionString => ConfigurationManager.ConnectionStrings["MainDatabase"].ConnectionString;     
+
+        // 2-ой вариант подключения
+        //string DataBaseFilePath => Path.Combine(Application.StartupPath, @"Properties\col1.mdf");
+        //string connectionString => $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={DataBaseFilePath};Integrated Security=True";
+
+        // 1ый вариант подключения
+        //string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\д\source\repos\GofromirColor\GofromirColor\Properties\col1.mdf;Integrated Security=True";
 
         public Form1()
         {
@@ -617,6 +627,12 @@ namespace GofromirColor
                          {
                              this.printDocument1.Print();
                          }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form2 form = new Form2();
+            form.Show();
         }
     }
 
