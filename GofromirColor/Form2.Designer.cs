@@ -52,6 +52,7 @@
             this.colorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.col1DataSet = new GofromirColor.col1DataSet();
             this.colorsTableAdapter = new GofromirColor.col1DataSetTableAdapters.ColorsTableAdapter();
+            this.btnCalculate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colorsBindingSource)).BeginInit();
@@ -87,9 +88,9 @@
             this.waterDataGridViewTextBoxColumn,
             this.viscosityDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.colorsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 62);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 58);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(761, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(1065, 150);
             this.dataGridView1.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
@@ -215,11 +216,24 @@
             // 
             this.colorsTableAdapter.ClearBeforeFill = true;
             // 
+            // btnCalculate
+            // 
+            this.btnCalculate.BackColor = System.Drawing.Color.DarkGray;
+            this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCalculate.Location = new System.Drawing.Point(25, 222);
+            this.btnCalculate.Name = "btnCalculate";
+            this.btnCalculate.Size = new System.Drawing.Size(124, 47);
+            this.btnCalculate.TabIndex = 41;
+            this.btnCalculate.Text = "Рассчитать";
+            this.btnCalculate.UseVisualStyleBackColor = false;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1089, 281);
+            this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form2";
             this.Text = "Form2";
@@ -257,5 +271,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn whiteProcDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn waterDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn viscosityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnCalculate;
     }
 }

@@ -31,13 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblErrT0 = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.lbl_listbox1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.txtGRPanton = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.txtGRWeight = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.btnCalculate = new System.Windows.Forms.Button();
@@ -90,28 +92,34 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.textBox34 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.txtKRViscosity = new System.Windows.Forms.TextBox();
+            this.txtKRPantonNew = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.btnKRSave = new System.Windows.Forms.Button();
+            this.txtKRWhiteBlack = new System.Windows.Forms.TextBox();
+            this.txtKRExtenderType = new System.Windows.Forms.TextBox();
+            this.txtKRPanton = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.textBox47 = new System.Windows.Forms.TextBox();
+            this.txtKRWeight = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBox27 = new System.Windows.Forms.TextBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
-            this.textBox30 = new System.Windows.Forms.TextBox();
-            this.textBox31 = new System.Windows.Forms.TextBox();
-            this.textBox32 = new System.Windows.Forms.TextBox();
-            this.textBox33 = new System.Windows.Forms.TextBox();
+            this.txtKRPink = new System.Windows.Forms.TextBox();
+            this.txtKROrange = new System.Windows.Forms.TextBox();
+            this.txtKRRadomin = new System.Windows.Forms.TextBox();
+            this.txtKRRubin = new System.Windows.Forms.TextBox();
+            this.txtKRRed = new System.Windows.Forms.TextBox();
+            this.txtKRYellow = new System.Windows.Forms.TextBox();
             this.textBox35 = new System.Windows.Forms.TextBox();
             this.textBox36 = new System.Windows.Forms.TextBox();
             this.textBox37 = new System.Windows.Forms.TextBox();
             this.textBox38 = new System.Windows.Forms.TextBox();
             this.textBox39 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox40 = new System.Windows.Forms.TextBox();
+            this.txtKRExtenderKg = new System.Windows.Forms.TextBox();
             this.textBox41 = new System.Windows.Forms.TextBox();
             this.textBox42 = new System.Windows.Forms.TextBox();
             this.textBox43 = new System.Windows.Forms.TextBox();
@@ -119,21 +127,19 @@
             this.textBox45 = new System.Windows.Forms.TextBox();
             this.textBox46 = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
-            this.textBox48 = new System.Windows.Forms.TextBox();
+            this.txtKRWater = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.textBox49 = new System.Windows.Forms.TextBox();
+            this.txtKRWhite = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.textBox50 = new System.Windows.Forms.TextBox();
+            this.txtKRBlack = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
-            this.textBox51 = new System.Windows.Forms.TextBox();
+            this.txtKRGreen = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
-            this.textBox52 = new System.Windows.Forms.TextBox();
+            this.txtKRBlue = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.textBox53 = new System.Windows.Forms.TextBox();
+            this.txtKRViolet = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
@@ -146,7 +152,6 @@
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -170,14 +175,15 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Controls.Add(this.lblErrT0);
+            this.tabPage1.Controls.Add(this.btnEdit);
             this.tabPage1.Controls.Add(this.lbl_listbox1);
             this.tabPage1.Controls.Add(this.listBox1);
             this.tabPage1.Controls.Add(this.txtGRPanton);
             this.tabPage1.Controls.Add(this.btnSearch);
             this.tabPage1.Controls.Add(this.label19);
             this.tabPage1.Controls.Add(this.label20);
-            this.tabPage1.Controls.Add(this.textBox28);
+            this.tabPage1.Controls.Add(this.txtGRWeight);
             this.tabPage1.Controls.Add(this.label21);
             this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Controls.Add(this.btnCalculate);
@@ -187,6 +193,29 @@
             this.tabPage1.Size = new System.Drawing.Size(792, 365);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Готовить рецепт";
+            // 
+            // lblErrT0
+            // 
+            this.lblErrT0.AutoSize = true;
+            this.lblErrT0.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblErrT0.ForeColor = System.Drawing.Color.Red;
+            this.lblErrT0.Location = new System.Drawing.Point(22, 256);
+            this.lblErrT0.Name = "lblErrT0";
+            this.lblErrT0.Size = new System.Drawing.Size(61, 13);
+            this.lblErrT0.TabIndex = 61;
+            this.lblErrT0.Text = "Внимание!";
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.DarkGray;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnEdit.Location = new System.Drawing.Point(182, 293);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(151, 47);
+            this.btnEdit.TabIndex = 60;
+            this.btnEdit.Text = "Корректировка";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // lbl_listbox1
             // 
@@ -251,16 +280,16 @@
             this.label20.TabIndex = 54;
             this.label20.Text = "----";
             // 
-            // textBox28
+            // txtGRWeight
             // 
-            this.textBox28.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox28.Location = new System.Drawing.Point(323, 35);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(95, 26);
-            this.textBox28.TabIndex = 53;
-            this.textBox28.Text = "0,0";
-            this.textBox28.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox28_KeyPress);
+            this.txtGRWeight.BackColor = System.Drawing.SystemColors.Window;
+            this.txtGRWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtGRWeight.Location = new System.Drawing.Point(323, 35);
+            this.txtGRWeight.Name = "txtGRWeight";
+            this.txtGRWeight.Size = new System.Drawing.Size(95, 26);
+            this.txtGRWeight.TabIndex = 53;
+            this.txtGRWeight.Text = "0";
+            this.txtGRWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox28_KeyPress);
             // 
             // label21
             // 
@@ -368,8 +397,9 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(95, 26);
             this.textBox6.TabIndex = 53;
-            this.textBox6.Text = "0,0";
+            this.textBox6.Text = "0";
             this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
+            this.textBox6.Leave += new System.EventHandler(this.textBox6_Leave);
             // 
             // textBox5
             // 
@@ -379,8 +409,9 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(95, 26);
             this.textBox5.TabIndex = 52;
-            this.textBox5.Text = "0,0";
+            this.textBox5.Text = "0";
             this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
+            this.textBox5.Leave += new System.EventHandler(this.textBox5_Leave);
             // 
             // textBox4
             // 
@@ -390,8 +421,9 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(95, 26);
             this.textBox4.TabIndex = 51;
-            this.textBox4.Text = "0,0";
+            this.textBox4.Text = "0";
             this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
+            this.textBox4.Leave += new System.EventHandler(this.textBox4_Leave);
             // 
             // textBox3
             // 
@@ -401,8 +433,9 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(95, 26);
             this.textBox3.TabIndex = 50;
-            this.textBox3.Text = "0,0";
+            this.textBox3.Text = "0";
             this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
+            this.textBox3.Leave += new System.EventHandler(this.textBox3_Leave);
             // 
             // textBox2
             // 
@@ -412,8 +445,9 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(95, 26);
             this.textBox2.TabIndex = 49;
-            this.textBox2.Text = "0,0";
+            this.textBox2.Text = "0";
             this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
             // textBox1
             // 
@@ -423,8 +457,9 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(95, 26);
             this.textBox1.TabIndex = 48;
-            this.textBox1.Text = "0,0";
+            this.textBox1.Text = "0";
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // label17
             // 
@@ -443,8 +478,9 @@
             this.textBox26.Name = "textBox26";
             this.textBox26.Size = new System.Drawing.Size(95, 26);
             this.textBox26.TabIndex = 46;
-            this.textBox26.Text = "0,0";
+            this.textBox26.Text = "0";
             this.textBox26.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox26_KeyPress);
+            this.textBox26.Leave += new System.EventHandler(this.textBox26_Leave);
             // 
             // textBox25
             // 
@@ -520,8 +556,9 @@
             this.textBox21.Name = "textBox21";
             this.textBox21.Size = new System.Drawing.Size(95, 26);
             this.textBox21.TabIndex = 37;
-            this.textBox21.Text = "0,0";
+            this.textBox21.Text = "0";
             this.textBox21.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox21_KeyPress);
+            this.textBox21.Leave += new System.EventHandler(this.textBox21_Leave);
             // 
             // textBox14
             // 
@@ -650,8 +687,9 @@
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(95, 26);
             this.textBox12.TabIndex = 22;
-            this.textBox12.Text = "0,0";
+            this.textBox12.Text = "0";
             this.textBox12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
+            this.textBox12.Leave += new System.EventHandler(this.textBox12_Leave);
             // 
             // label11
             // 
@@ -670,8 +708,9 @@
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(95, 26);
             this.textBox11.TabIndex = 20;
-            this.textBox11.Text = "0,0";
+            this.textBox11.Text = "0";
             this.textBox11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox11_KeyPress);
+            this.textBox11.Leave += new System.EventHandler(this.textBox11_Leave);
             // 
             // label10
             // 
@@ -691,8 +730,9 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(95, 26);
             this.textBox10.TabIndex = 18;
-            this.textBox10.Text = "0,0";
+            this.textBox10.Text = "0";
             this.textBox10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox10_KeyPress);
+            this.textBox10.Leave += new System.EventHandler(this.textBox10_Leave);
             // 
             // label9
             // 
@@ -712,8 +752,9 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(95, 26);
             this.textBox9.TabIndex = 16;
-            this.textBox9.Text = "0,0";
+            this.textBox9.Text = "0";
             this.textBox9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox9_KeyPress);
+            this.textBox9.Leave += new System.EventHandler(this.textBox9_Leave);
             // 
             // label8
             // 
@@ -733,8 +774,9 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(95, 26);
             this.textBox8.TabIndex = 14;
-            this.textBox8.Text = "0,0";
+            this.textBox8.Text = "0";
             this.textBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox8_KeyPress);
+            this.textBox8.Leave += new System.EventHandler(this.textBox8_Leave);
             // 
             // label7
             // 
@@ -754,8 +796,9 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(95, 26);
             this.textBox7.TabIndex = 12;
-            this.textBox7.Text = "0,0";
+            this.textBox7.Text = "0";
             this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
+            this.textBox7.Leave += new System.EventHandler(this.textBox7_Leave);
             // 
             // label6
             // 
@@ -815,28 +858,34 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.tabPage3.Controls.Add(this.textBox34);
-            this.tabPage3.Controls.Add(this.button3);
+            this.tabPage3.Controls.Add(this.label45);
+            this.tabPage3.Controls.Add(this.label44);
+            this.tabPage3.Controls.Add(this.txtKRViscosity);
+            this.tabPage3.Controls.Add(this.txtKRPantonNew);
+            this.tabPage3.Controls.Add(this.label43);
+            this.tabPage3.Controls.Add(this.btnKRSave);
+            this.tabPage3.Controls.Add(this.txtKRWhiteBlack);
+            this.tabPage3.Controls.Add(this.txtKRExtenderType);
+            this.tabPage3.Controls.Add(this.txtKRPanton);
             this.tabPage3.Controls.Add(this.label24);
             this.tabPage3.Controls.Add(this.label28);
-            this.tabPage3.Controls.Add(this.textBox47);
+            this.tabPage3.Controls.Add(this.txtKRWeight);
             this.tabPage3.Controls.Add(this.label41);
             this.tabPage3.Controls.Add(this.label42);
             this.tabPage3.Controls.Add(this.label23);
-            this.tabPage3.Controls.Add(this.textBox27);
-            this.tabPage3.Controls.Add(this.textBox29);
-            this.tabPage3.Controls.Add(this.textBox30);
-            this.tabPage3.Controls.Add(this.textBox31);
-            this.tabPage3.Controls.Add(this.textBox32);
-            this.tabPage3.Controls.Add(this.textBox33);
+            this.tabPage3.Controls.Add(this.txtKRPink);
+            this.tabPage3.Controls.Add(this.txtKROrange);
+            this.tabPage3.Controls.Add(this.txtKRRadomin);
+            this.tabPage3.Controls.Add(this.txtKRRubin);
+            this.tabPage3.Controls.Add(this.txtKRRed);
+            this.tabPage3.Controls.Add(this.txtKRYellow);
             this.tabPage3.Controls.Add(this.textBox35);
             this.tabPage3.Controls.Add(this.textBox36);
             this.tabPage3.Controls.Add(this.textBox37);
             this.tabPage3.Controls.Add(this.textBox38);
             this.tabPage3.Controls.Add(this.textBox39);
-            this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Controls.Add(this.label25);
-            this.tabPage3.Controls.Add(this.textBox40);
+            this.tabPage3.Controls.Add(this.txtKRExtenderKg);
             this.tabPage3.Controls.Add(this.textBox41);
             this.tabPage3.Controls.Add(this.textBox42);
             this.tabPage3.Controls.Add(this.textBox43);
@@ -844,21 +893,19 @@
             this.tabPage3.Controls.Add(this.textBox45);
             this.tabPage3.Controls.Add(this.textBox46);
             this.tabPage3.Controls.Add(this.label26);
-            this.tabPage3.Controls.Add(this.comboBox3);
             this.tabPage3.Controls.Add(this.label27);
-            this.tabPage3.Controls.Add(this.comboBox4);
             this.tabPage3.Controls.Add(this.label29);
-            this.tabPage3.Controls.Add(this.textBox48);
+            this.tabPage3.Controls.Add(this.txtKRWater);
             this.tabPage3.Controls.Add(this.label30);
-            this.tabPage3.Controls.Add(this.textBox49);
+            this.tabPage3.Controls.Add(this.txtKRWhite);
             this.tabPage3.Controls.Add(this.label31);
-            this.tabPage3.Controls.Add(this.textBox50);
+            this.tabPage3.Controls.Add(this.txtKRBlack);
             this.tabPage3.Controls.Add(this.label32);
-            this.tabPage3.Controls.Add(this.textBox51);
+            this.tabPage3.Controls.Add(this.txtKRGreen);
             this.tabPage3.Controls.Add(this.label33);
-            this.tabPage3.Controls.Add(this.textBox52);
+            this.tabPage3.Controls.Add(this.txtKRBlue);
             this.tabPage3.Controls.Add(this.label34);
-            this.tabPage3.Controls.Add(this.textBox53);
+            this.tabPage3.Controls.Add(this.txtKRViolet);
             this.tabPage3.Controls.Add(this.label35);
             this.tabPage3.Controls.Add(this.label36);
             this.tabPage3.Controls.Add(this.label37);
@@ -870,28 +917,97 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(792, 365);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "В работе";
+            this.tabPage3.Text = "Корректировка рецепта";
             // 
-            // textBox34
+            // label45
             // 
-            this.textBox34.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox34.Location = new System.Drawing.Point(22, 35);
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(229, 26);
-            this.textBox34.TabIndex = 108;
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label45.Location = new System.Drawing.Point(274, 205);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(23, 13);
+            this.label45.TabIndex = 116;
+            this.label45.Text = "----";
             // 
-            // button3
+            // label44
             // 
-            this.button3.BackColor = System.Drawing.Color.DarkGray;
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(257, 35);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(26, 26);
-            this.button3.TabIndex = 107;
-            this.button3.UseVisualStyleBackColor = false;
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label44.Location = new System.Drawing.Point(329, 179);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(67, 13);
+            this.label44.TabIndex = 115;
+            this.label44.Text = "Вязкость, с";
+            // 
+            // txtKRViscosity
+            // 
+            this.txtKRViscosity.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRViscosity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRViscosity.Location = new System.Drawing.Point(323, 197);
+            this.txtKRViscosity.Name = "txtKRViscosity";
+            this.txtKRViscosity.Size = new System.Drawing.Size(95, 26);
+            this.txtKRViscosity.TabIndex = 114;
+            this.txtKRViscosity.Text = "0";
+            this.txtKRViscosity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRViscosity_KeyPress);
+            this.txtKRViscosity.Leave += new System.EventHandler(this.txtKRViscosity_Leave);
+            // 
+            // txtKRPantonNew
+            // 
+            this.txtKRPantonNew.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRPantonNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRPantonNew.Location = new System.Drawing.Point(22, 197);
+            this.txtKRPantonNew.Name = "txtKRPantonNew";
+            this.txtKRPantonNew.Size = new System.Drawing.Size(229, 26);
+            this.txtKRPantonNew.TabIndex = 113;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label43.Location = new System.Drawing.Point(22, 179);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(107, 13);
+            this.label43.TabIndex = 112;
+            this.label43.Text = "Полученный пантон";
+            // 
+            // btnKRSave
+            // 
+            this.btnKRSave.BackColor = System.Drawing.Color.DarkGray;
+            this.btnKRSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnKRSave.Location = new System.Drawing.Point(22, 289);
+            this.btnKRSave.Name = "btnKRSave";
+            this.btnKRSave.Size = new System.Drawing.Size(229, 47);
+            this.btnKRSave.TabIndex = 111;
+            this.btnKRSave.Text = "Пересчитать/Сохранить";
+            this.btnKRSave.UseVisualStyleBackColor = false;
+            this.btnKRSave.Click += new System.EventHandler(this.btnKRSave_Click);
+            // 
+            // txtKRWhiteBlack
+            // 
+            this.txtKRWhiteBlack.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRWhiteBlack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRWhiteBlack.Location = new System.Drawing.Point(22, 90);
+            this.txtKRWhiteBlack.Name = "txtKRWhiteBlack";
+            this.txtKRWhiteBlack.Size = new System.Drawing.Size(95, 26);
+            this.txtKRWhiteBlack.TabIndex = 110;
+            // 
+            // txtKRExtenderType
+            // 
+            this.txtKRExtenderType.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRExtenderType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRExtenderType.Location = new System.Drawing.Point(156, 90);
+            this.txtKRExtenderType.Name = "txtKRExtenderType";
+            this.txtKRExtenderType.Size = new System.Drawing.Size(95, 26);
+            this.txtKRExtenderType.TabIndex = 109;
+            // 
+            // txtKRPanton
+            // 
+            this.txtKRPanton.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRPanton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRPanton.Location = new System.Drawing.Point(22, 35);
+            this.txtKRPanton.Name = "txtKRPanton";
+            this.txtKRPanton.Size = new System.Drawing.Size(229, 26);
+            this.txtKRPanton.TabIndex = 108;
             // 
             // label24
             // 
@@ -899,29 +1015,29 @@
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label24.Location = new System.Drawing.Point(329, 17);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(43, 13);
+            this.label24.Size = new System.Drawing.Size(87, 13);
             this.label24.TabIndex = 106;
-            this.label24.Text = "Вес, кг";
+            this.label24.Text = "Вес пантона, кг";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.Location = new System.Drawing.Point(292, 43);
+            this.label28.Location = new System.Drawing.Point(274, 40);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(23, 13);
             this.label28.TabIndex = 105;
             this.label28.Text = "----";
             // 
-            // textBox47
+            // txtKRWeight
             // 
-            this.textBox47.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox47.Location = new System.Drawing.Point(323, 35);
-            this.textBox47.Name = "textBox47";
-            this.textBox47.Size = new System.Drawing.Size(95, 26);
-            this.textBox47.TabIndex = 104;
-            this.textBox47.Text = "0,0";
+            this.txtKRWeight.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRWeight.Location = new System.Drawing.Point(323, 35);
+            this.txtKRWeight.Name = "txtKRWeight";
+            this.txtKRWeight.Size = new System.Drawing.Size(95, 26);
+            this.txtKRWeight.TabIndex = 104;
+            this.txtKRWeight.Text = "0";
             // 
             // label41
             // 
@@ -929,9 +1045,9 @@
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label41.Location = new System.Drawing.Point(22, 17);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(44, 13);
+            this.label41.Size = new System.Drawing.Size(132, 13);
             this.label41.TabIndex = 103;
-            this.label41.Text = "Пантон";
+            this.label41.Text = "Корректируемый пантон";
             // 
             // label42
             // 
@@ -946,71 +1062,83 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.Location = new System.Drawing.Point(320, 72);
+            this.label23.Location = new System.Drawing.Point(329, 74);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(75, 13);
+            this.label23.Size = new System.Drawing.Size(78, 13);
             this.label23.TabIndex = 101;
-            this.label23.Text = "Экстендер, %";
+            this.label23.Text = "Экстендер, кг";
             // 
-            // textBox27
+            // txtKRPink
             // 
-            this.textBox27.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox27.Location = new System.Drawing.Point(483, 307);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(95, 26);
-            this.textBox27.TabIndex = 100;
-            this.textBox27.Text = "0,0";
+            this.txtKRPink.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRPink.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRPink.Location = new System.Drawing.Point(483, 307);
+            this.txtKRPink.Name = "txtKRPink";
+            this.txtKRPink.Size = new System.Drawing.Size(95, 26);
+            this.txtKRPink.TabIndex = 100;
+            this.txtKRPink.Text = "0";
+            this.txtKRPink.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRPink_KeyPress);
+            this.txtKRPink.Leave += new System.EventHandler(this.txtKRPink_Leave);
             // 
-            // textBox29
+            // txtKROrange
             // 
-            this.textBox29.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox29.Location = new System.Drawing.Point(483, 252);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(95, 26);
-            this.textBox29.TabIndex = 99;
-            this.textBox29.Text = "0,0";
+            this.txtKROrange.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKROrange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKROrange.Location = new System.Drawing.Point(483, 252);
+            this.txtKROrange.Name = "txtKROrange";
+            this.txtKROrange.Size = new System.Drawing.Size(95, 26);
+            this.txtKROrange.TabIndex = 99;
+            this.txtKROrange.Text = "0";
+            this.txtKROrange.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKROrange_KeyPress);
+            this.txtKROrange.Leave += new System.EventHandler(this.txtKROrange_Leave);
             // 
-            // textBox30
+            // txtKRRadomin
             // 
-            this.textBox30.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox30.Location = new System.Drawing.Point(483, 197);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(95, 26);
-            this.textBox30.TabIndex = 98;
-            this.textBox30.Text = "0,0";
+            this.txtKRRadomin.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRRadomin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRRadomin.Location = new System.Drawing.Point(483, 197);
+            this.txtKRRadomin.Name = "txtKRRadomin";
+            this.txtKRRadomin.Size = new System.Drawing.Size(95, 26);
+            this.txtKRRadomin.TabIndex = 98;
+            this.txtKRRadomin.Text = "0";
+            this.txtKRRadomin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRRadomin_KeyPress);
+            this.txtKRRadomin.Leave += new System.EventHandler(this.txtKRRadomin_Leave);
             // 
-            // textBox31
+            // txtKRRubin
             // 
-            this.textBox31.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox31.Location = new System.Drawing.Point(483, 142);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(95, 26);
-            this.textBox31.TabIndex = 97;
-            this.textBox31.Text = "0,0";
+            this.txtKRRubin.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRRubin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRRubin.Location = new System.Drawing.Point(483, 142);
+            this.txtKRRubin.Name = "txtKRRubin";
+            this.txtKRRubin.Size = new System.Drawing.Size(95, 26);
+            this.txtKRRubin.TabIndex = 97;
+            this.txtKRRubin.Text = "0";
+            this.txtKRRubin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRRubin_KeyPress);
+            this.txtKRRubin.Leave += new System.EventHandler(this.txtKRRubin_Leave);
             // 
-            // textBox32
+            // txtKRRed
             // 
-            this.textBox32.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox32.Location = new System.Drawing.Point(483, 87);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(95, 26);
-            this.textBox32.TabIndex = 96;
-            this.textBox32.Text = "0,0";
+            this.txtKRRed.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRRed.Location = new System.Drawing.Point(483, 87);
+            this.txtKRRed.Name = "txtKRRed";
+            this.txtKRRed.Size = new System.Drawing.Size(95, 26);
+            this.txtKRRed.TabIndex = 96;
+            this.txtKRRed.Text = "0";
+            this.txtKRRed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRRed_KeyPress);
+            this.txtKRRed.Leave += new System.EventHandler(this.txtKRRed_Leave);
             // 
-            // textBox33
+            // txtKRYellow
             // 
-            this.textBox33.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox33.Location = new System.Drawing.Point(483, 32);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(95, 26);
-            this.textBox33.TabIndex = 95;
-            this.textBox33.Text = "0,0";
+            this.txtKRYellow.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRYellow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRYellow.Location = new System.Drawing.Point(483, 32);
+            this.txtKRYellow.Name = "txtKRYellow";
+            this.txtKRYellow.Size = new System.Drawing.Size(95, 26);
+            this.txtKRYellow.TabIndex = 95;
+            this.txtKRYellow.Text = "0";
+            this.txtKRYellow.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRYellow_KeyPress);
+            this.txtKRYellow.Leave += new System.EventHandler(this.txtKRYellow_Leave);
             // 
             // textBox35
             // 
@@ -1056,17 +1184,6 @@
             this.textBox39.Size = new System.Drawing.Size(28, 26);
             this.textBox39.TabIndex = 88;
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.DarkGray;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(27, 286);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 47);
-            this.button2.TabIndex = 87;
-            this.button2.Text = "Изменить";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
             // label25
             // 
             this.label25.AutoSize = true;
@@ -1077,15 +1194,17 @@
             this.label25.TabIndex = 86;
             this.label25.Text = "----";
             // 
-            // textBox40
+            // txtKRExtenderKg
             // 
-            this.textBox40.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox40.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox40.Location = new System.Drawing.Point(323, 90);
-            this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new System.Drawing.Size(95, 26);
-            this.textBox40.TabIndex = 85;
-            this.textBox40.Text = "0,0";
+            this.txtKRExtenderKg.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRExtenderKg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRExtenderKg.Location = new System.Drawing.Point(323, 90);
+            this.txtKRExtenderKg.Name = "txtKRExtenderKg";
+            this.txtKRExtenderKg.Size = new System.Drawing.Size(95, 26);
+            this.txtKRExtenderKg.TabIndex = 85;
+            this.txtKRExtenderKg.Text = "0";
+            this.txtKRExtenderKg.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRExtenderKg_KeyPress);
+            this.txtKRExtenderKg.Leave += new System.EventHandler(this.txtKRExtenderKg_Leave);
             // 
             // textBox41
             // 
@@ -1151,15 +1270,6 @@
             this.label26.TabIndex = 78;
             this.label26.Text = "По белому/бурому";
             // 
-            // comboBox3
-            // 
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(22, 88);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(102, 28);
-            this.comboBox3.TabIndex = 77;
-            // 
             // label27
             // 
             this.label27.AutoSize = true;
@@ -1170,33 +1280,26 @@
             this.label27.TabIndex = 76;
             this.label27.Text = "Экстендер, тип";
             // 
-            // comboBox4
-            // 
-            this.comboBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(156, 88);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(95, 28);
-            this.comboBox4.TabIndex = 75;
-            // 
             // label29
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label29.Location = new System.Drawing.Point(679, 291);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(46, 13);
+            this.label29.Size = new System.Drawing.Size(49, 13);
             this.label29.TabIndex = 72;
-            this.label29.Text = "Вода, %";
+            this.label29.Text = "Вода, кг";
             // 
-            // textBox48
+            // txtKRWater
             // 
-            this.textBox48.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox48.Location = new System.Drawing.Point(679, 307);
-            this.textBox48.Name = "textBox48";
-            this.textBox48.Size = new System.Drawing.Size(95, 26);
-            this.textBox48.TabIndex = 71;
-            this.textBox48.Text = "0,0";
+            this.txtKRWater.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRWater.Location = new System.Drawing.Point(679, 307);
+            this.txtKRWater.Name = "txtKRWater";
+            this.txtKRWater.Size = new System.Drawing.Size(95, 26);
+            this.txtKRWater.TabIndex = 71;
+            this.txtKRWater.Text = "0";
+            this.txtKRWater.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRWater_KeyPress);
+            this.txtKRWater.Leave += new System.EventHandler(this.txtKRWater_Leave);
             // 
             // label30
             // 
@@ -1204,18 +1307,20 @@
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label30.Location = new System.Drawing.Point(679, 236);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(52, 13);
+            this.label30.Size = new System.Drawing.Size(55, 13);
             this.label30.TabIndex = 70;
-            this.label30.Text = "Белая, %";
+            this.label30.Text = "Белая, кг";
             // 
-            // textBox49
+            // txtKRWhite
             // 
-            this.textBox49.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox49.Location = new System.Drawing.Point(679, 252);
-            this.textBox49.Name = "textBox49";
-            this.textBox49.Size = new System.Drawing.Size(95, 26);
-            this.textBox49.TabIndex = 69;
-            this.textBox49.Text = "0,0";
+            this.txtKRWhite.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRWhite.Location = new System.Drawing.Point(679, 252);
+            this.txtKRWhite.Name = "txtKRWhite";
+            this.txtKRWhite.Size = new System.Drawing.Size(95, 26);
+            this.txtKRWhite.TabIndex = 69;
+            this.txtKRWhite.Text = "0";
+            this.txtKRWhite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRWhite_KeyPress);
+            this.txtKRWhite.Leave += new System.EventHandler(this.txtKRWhite_Leave);
             // 
             // label31
             // 
@@ -1223,19 +1328,21 @@
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label31.Location = new System.Drawing.Point(679, 181);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(59, 13);
+            this.label31.Size = new System.Drawing.Size(62, 13);
             this.label31.TabIndex = 68;
-            this.label31.Text = "Черная, %";
+            this.label31.Text = "Черная, кг";
             // 
-            // textBox50
+            // txtKRBlack
             // 
-            this.textBox50.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox50.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox50.Location = new System.Drawing.Point(679, 197);
-            this.textBox50.Name = "textBox50";
-            this.textBox50.Size = new System.Drawing.Size(95, 26);
-            this.textBox50.TabIndex = 67;
-            this.textBox50.Text = "0,0";
+            this.txtKRBlack.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRBlack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRBlack.Location = new System.Drawing.Point(679, 197);
+            this.txtKRBlack.Name = "txtKRBlack";
+            this.txtKRBlack.Size = new System.Drawing.Size(95, 26);
+            this.txtKRBlack.TabIndex = 67;
+            this.txtKRBlack.Text = "0";
+            this.txtKRBlack.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRBlack_KeyPress);
+            this.txtKRBlack.Leave += new System.EventHandler(this.txtKRBlack_Leave);
             // 
             // label32
             // 
@@ -1243,19 +1350,21 @@
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label32.Location = new System.Drawing.Point(679, 126);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(64, 13);
+            this.label32.Size = new System.Drawing.Size(67, 13);
             this.label32.TabIndex = 66;
-            this.label32.Text = "Зеленая, %";
+            this.label32.Text = "Зеленая, кг";
             // 
-            // textBox51
+            // txtKRGreen
             // 
-            this.textBox51.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox51.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox51.Location = new System.Drawing.Point(679, 142);
-            this.textBox51.Name = "textBox51";
-            this.textBox51.Size = new System.Drawing.Size(95, 26);
-            this.textBox51.TabIndex = 65;
-            this.textBox51.Text = "0,0";
+            this.txtKRGreen.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRGreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRGreen.Location = new System.Drawing.Point(679, 142);
+            this.txtKRGreen.Name = "txtKRGreen";
+            this.txtKRGreen.Size = new System.Drawing.Size(95, 26);
+            this.txtKRGreen.TabIndex = 65;
+            this.txtKRGreen.Text = "0";
+            this.txtKRGreen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRGreen_KeyPress);
+            this.txtKRGreen.Leave += new System.EventHandler(this.txtKRGreen_Leave);
             // 
             // label33
             // 
@@ -1263,19 +1372,21 @@
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label33.Location = new System.Drawing.Point(679, 71);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(52, 13);
+            this.label33.Size = new System.Drawing.Size(55, 13);
             this.label33.TabIndex = 64;
-            this.label33.Text = "Синяя, %";
+            this.label33.Text = "Синяя, кг";
             // 
-            // textBox52
+            // txtKRBlue
             // 
-            this.textBox52.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox52.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox52.Location = new System.Drawing.Point(679, 87);
-            this.textBox52.Name = "textBox52";
-            this.textBox52.Size = new System.Drawing.Size(95, 26);
-            this.textBox52.TabIndex = 63;
-            this.textBox52.Text = "0,0";
+            this.txtKRBlue.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRBlue.Location = new System.Drawing.Point(679, 87);
+            this.txtKRBlue.Name = "txtKRBlue";
+            this.txtKRBlue.Size = new System.Drawing.Size(95, 26);
+            this.txtKRBlue.TabIndex = 63;
+            this.txtKRBlue.Text = "0";
+            this.txtKRBlue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRBlue_KeyPress);
+            this.txtKRBlue.Leave += new System.EventHandler(this.txtKRBlue_Leave);
             // 
             // label34
             // 
@@ -1283,64 +1394,66 @@
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label34.Location = new System.Drawing.Point(679, 16);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(85, 13);
+            this.label34.Size = new System.Drawing.Size(88, 13);
             this.label34.TabIndex = 62;
-            this.label34.Text = "Фиолетовая, %";
+            this.label34.Text = "Фиолетовая, кг";
             // 
-            // textBox53
+            // txtKRViolet
             // 
-            this.textBox53.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox53.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox53.Location = new System.Drawing.Point(679, 32);
-            this.textBox53.Name = "textBox53";
-            this.textBox53.Size = new System.Drawing.Size(95, 26);
-            this.textBox53.TabIndex = 61;
-            this.textBox53.Text = "0,0";
+            this.txtKRViolet.BackColor = System.Drawing.SystemColors.Window;
+            this.txtKRViolet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtKRViolet.Location = new System.Drawing.Point(679, 32);
+            this.txtKRViolet.Name = "txtKRViolet";
+            this.txtKRViolet.Size = new System.Drawing.Size(95, 26);
+            this.txtKRViolet.TabIndex = 61;
+            this.txtKRViolet.Text = "0";
+            this.txtKRViolet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtKRViolet_KeyPress);
+            this.txtKRViolet.Leave += new System.EventHandler(this.txtKRViolet_Leave);
             // 
             // label35
             // 
             this.label35.AutoSize = true;
             this.label35.Location = new System.Drawing.Point(483, 291);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(47, 13);
+            this.label35.Size = new System.Drawing.Size(50, 13);
             this.label35.TabIndex = 60;
-            this.label35.Text = "Пинк, %";
+            this.label35.Text = "Пинк, кг";
             // 
             // label36
             // 
             this.label36.AutoSize = true;
             this.label36.Location = new System.Drawing.Point(483, 236);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(79, 13);
+            this.label36.Size = new System.Drawing.Size(82, 13);
             this.label36.TabIndex = 59;
-            this.label36.Text = "Оранжевая, %";
+            this.label36.Text = "Оранжевая, кг";
             // 
             // label37
             // 
             this.label37.AutoSize = true;
             this.label37.Location = new System.Drawing.Point(483, 181);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(66, 13);
+            this.label37.Size = new System.Drawing.Size(69, 13);
             this.label37.TabIndex = 58;
-            this.label37.Text = "Радомин, %";
+            this.label37.Text = "Радомин, кг";
             // 
             // label38
             // 
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(483, 126);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(51, 13);
+            this.label38.Size = new System.Drawing.Size(54, 13);
             this.label38.TabIndex = 57;
-            this.label38.Text = "Рубин, %";
+            this.label38.Text = "Рубин, кг";
             // 
             // label39
             // 
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(483, 71);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(64, 13);
+            this.label39.Size = new System.Drawing.Size(67, 13);
             this.label39.TabIndex = 56;
-            this.label39.Text = "Красная, %";
+            this.label39.Text = "Красная, кг";
             // 
             // label40
             // 
@@ -1348,9 +1461,9 @@
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label40.Location = new System.Drawing.Point(483, 16);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(61, 13);
+            this.label40.Size = new System.Drawing.Size(64, 13);
             this.label40.TabIndex = 55;
-            this.label40.Text = "Желтая, %";
+            this.label40.Text = "Желтая, кг";
             // 
             // menuStrip1
             // 
@@ -1391,18 +1504,6 @@
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.DarkGray;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(182, 293);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(151, 47);
-            this.button4.TabIndex = 60;
-            this.button4.Text = "Корректировка";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
@@ -1483,7 +1584,7 @@
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox28;
+        private System.Windows.Forms.TextBox txtGRWeight;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnSearch;
@@ -1495,20 +1596,19 @@
         private System.Windows.Forms.Label lbl_listbox1;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox27;
-        private System.Windows.Forms.TextBox textBox29;
-        private System.Windows.Forms.TextBox textBox30;
-        private System.Windows.Forms.TextBox textBox31;
-        private System.Windows.Forms.TextBox textBox32;
-        private System.Windows.Forms.TextBox textBox33;
+        private System.Windows.Forms.TextBox txtKRPink;
+        private System.Windows.Forms.TextBox txtKROrange;
+        private System.Windows.Forms.TextBox txtKRRadomin;
+        private System.Windows.Forms.TextBox txtKRRubin;
+        private System.Windows.Forms.TextBox txtKRRed;
+        private System.Windows.Forms.TextBox txtKRYellow;
         private System.Windows.Forms.TextBox textBox35;
         private System.Windows.Forms.TextBox textBox36;
         private System.Windows.Forms.TextBox textBox37;
         private System.Windows.Forms.TextBox textBox38;
         private System.Windows.Forms.TextBox textBox39;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox40;
+        private System.Windows.Forms.TextBox txtKRExtenderKg;
         private System.Windows.Forms.TextBox textBox41;
         private System.Windows.Forms.TextBox textBox42;
         private System.Windows.Forms.TextBox textBox43;
@@ -1516,21 +1616,19 @@
         private System.Windows.Forms.TextBox textBox45;
         private System.Windows.Forms.TextBox textBox46;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox textBox48;
+        private System.Windows.Forms.TextBox txtKRWater;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox49;
+        private System.Windows.Forms.TextBox txtKRWhite;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.TextBox textBox50;
+        private System.Windows.Forms.TextBox txtKRBlack;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TextBox textBox51;
+        private System.Windows.Forms.TextBox txtKRGreen;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox textBox52;
+        private System.Windows.Forms.TextBox txtKRBlue;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox textBox53;
+        private System.Windows.Forms.TextBox txtKRViolet;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;
@@ -1541,14 +1639,22 @@
         private System.Windows.Forms.TextBox textBox26;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox34;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtKRPanton;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox textBox47;
+        private System.Windows.Forms.TextBox txtKRWeight;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Label lblErrT0;
+        private System.Windows.Forms.TextBox txtKRExtenderType;
+        private System.Windows.Forms.TextBox txtKRWhiteBlack;
+        private System.Windows.Forms.Button btnKRSave;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox txtKRViscosity;
+        private System.Windows.Forms.TextBox txtKRPantonNew;
+        private System.Windows.Forms.Label label43;
     }
 }
 
