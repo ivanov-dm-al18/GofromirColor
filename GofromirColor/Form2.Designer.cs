@@ -88,7 +88,7 @@
             this.waterDataGridViewTextBoxColumn,
             this.viscosityDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.colorsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 58);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 47);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1065, 150);
             this.dataGridView1.TabIndex = 0;
