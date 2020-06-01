@@ -1679,3 +1679,88 @@ namespace GofromirColor
     }
 }
 
+/*
+ 
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+using System.Management;
+using System.IO;
+
+
+namespace Protection
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        string DiscSN_id = "SN193308905319";
+        string CPUInfo_id = "BFEBFBFF000406C4";
+        string VideoRam_id = "1073741824";
+
+
+        private string CPUInfo()
+        {
+            var mds = new ManagementObjectSearcher("Select ProcessorId From Win32_processor");  // Переменной присваивается неявный тип
+            string processor_id = "";
+            foreach (ManagementObject mo in mds.Get())    // Перебор массива значений mds.Get()
+            {
+                processor_id = mo["ProcessorId"].ToString();      // Возвращает значение ProcessorId в виде строки.
+                break;
+            }
+            return processor_id;              
+        }
+                       
+        private string DiscSN()
+        {
+            //("root\\CIMV2", "SELECT * FROM Win32_DiskDrive"); ---с правами доступа
+            var mds = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");  // Переменной присваивается неявный тип
+            string discSN = "";
+            foreach (ManagementObject mo in mds.Get())    // Перебор массива значений mds.Get()
+            {
+                discSN = mo["SerialNumber"].ToString();      // Возвращает значение Disc SerialNumber  в виде строки.
+                break;
+            }
+            return discSN;
+        }
+
+        private string VideoRam()
+        {
+            var mds = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");  // Переменной присваивается неявный тип
+            string videoRam = "";
+            foreach (ManagementObject mo in mds.Get())    // Перебор массива значений mds.Get()
+            {
+                videoRam = mo["AdapterRAM"].ToString();      // Возвращает значение AdapterRAM в виде строки.
+                break;
+            }
+            return videoRam;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = CPUInfo();
+            textBox3.Text = DiscSN();
+            textBox4.Text = VideoRam();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //if (CPUInfo_id != CPUInfo() || DiscSN_id != DiscSN() || VideoRam_id != VideoRam())
+             //   this.Close();
+
+        }
+    }
+}
+
+
+*/
