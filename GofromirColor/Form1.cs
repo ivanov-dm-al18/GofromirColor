@@ -11,12 +11,57 @@ using System.Windows.Forms;
 using System.IO;                // Добавляем для возможности печати
 using System.Configuration;     // Для SQL connectionstring подключение через config
 
+using System.Management;    // Для определения идентификаторов процессора, жесткого, видео карты
+
+
 // Удалено!
 
 namespace GofromirColor
 {
     public partial class Form1 : Form
     {
+        string DiscSN_id = "SN193308905319";
+        string CPUInfo_id = "BFEBFBFF000406C4";
+        string VideoRam_id = "1073741824";
+        
+        private string CPUInfo()
+        {
+            var mds = new ManagementObjectSearcher("Select ProcessorId From Win32_processor");  // Переменной присваивается неявный тип
+            string processor_id = "";
+            foreach (ManagementObject mo in mds.Get())    // Перебор массива значений mds.Get()
+            {
+                processor_id = mo["ProcessorId"].ToString();      // Возвращает значение ProcessorId в виде строки.
+                break;
+            }
+            return processor_id;
+        }   
+
+        private string DiscSN()
+        {
+            //("root\\CIMV2", "SELECT * FROM Win32_DiskDrive"); ---с правами доступа
+            var mds = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");  // Переменной присваивается неявный тип
+            string discSN = "";
+            foreach (ManagementObject mo in mds.Get())    // Перебор массива значений mds.Get()
+            {
+                discSN = mo["SerialNumber"].ToString();      // Возвращает значение Disc SerialNumber  в виде строки.
+                break;
+            }
+            return discSN;
+        }
+
+        private string VideoRam()
+        {
+            var mds = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");  // Переменной присваивается неявный тип
+            string videoRam = "";
+            foreach (ManagementObject mo in mds.Get())    // Перебор массива значений mds.Get()
+            {
+                videoRam = mo["AdapterRAM"].ToString();      // Возвращает значение AdapterRAM в виде строки.
+                break;
+            }
+            return videoRam;
+        }
+        
+
         // Создаем переменные для определения изменения 14 полей. "Корректировка рецепта"
         string var_txtKRExtenderKg;
         string var_txtKRYellow;
@@ -45,9 +90,7 @@ namespace GofromirColor
 
         // Для замены части запроса
         public string sql_query;
-
-
-
+               
 
         protected void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs ev)
         {
@@ -84,9 +127,7 @@ namespace GofromirColor
 
             myBrush.Dispose();
         }
-
-
-
+               
 
         public SqlConnection sqlConnection; // Для подключения к БД. Обьект обьявляем как поле класса  /*
 
@@ -112,6 +153,10 @@ namespace GofromirColor
 
         private async void Form1_Load(object sender, EventArgs e)
         {
+
+            if (CPUInfo_id != CPUInfo() || DiscSN_id != DiscSN() || VideoRam_id != VideoRam())  // Проверка ID, если не сходится. Форма закрывается.
+               this.Close();
+            
             //ClientSize = new Size(816, 454);                // Задаем жесткие размеры формы
             //FormBorderStyle = FormBorderStyle.FixedSingle;  // Границы формы фиксированные
 
@@ -229,19 +274,19 @@ namespace GofromirColor
             //textBox26.Text = Convert.ToString(summa);           
             if (summa != 100)
             {
-                MessageBox.Show("Рецепт введен неверно. Сумма всех компонентов не равна 100%. Выполните корректировку.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Рецепт введен неверно. Сумма всех компонентов не равна 100%. Выполните корректировку.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (comboBox1.SelectedIndex == -1)
             {
-                MessageBox.Show("Выберите экстендер.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Выберите экстендер.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (comboBox2.SelectedIndex == -1)
             {
-                MessageBox.Show("Выберите по какому слою краска (По белому/По бурому).", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Выберите по какому слою краска (По белому/По бурому).", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (textBox13.Text == "")
             {
-                MessageBox.Show("Введите название пантона.", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Введите название пантона.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {   // Формирование пантона (Пантон/ЛАК/По белому)
@@ -257,7 +302,7 @@ namespace GofromirColor
                     sqlReader = command.ExecuteReader(); // Читаем данные 
                     if (sqlReader.Read()) // Если есть пантон с таким именем, то выход из  процедуры.
                     {
-                        MessageBox.Show("Пантон с таким именем уже существует в БД!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Пантон с таким именем уже существует в БД!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         sqlReader.Close();
                         return;
                     }
@@ -286,46 +331,11 @@ namespace GofromirColor
                     command.Parameters.AddWithValue("Viscosity", (float)Convert.ToDouble(textBox26.Text));
                     command.Parameters.AddWithValue("Extender", comboBox1.SelectedItem);
                     command.Parameters.AddWithValue("WhiteBlack", comboBox2.SelectedItem);
-
-                    //ДОБАВИТЬ ПРОВЕРКУ, ЧТО РЕЦЕПТ С ТАКИМ ИМЕНЕМ СУЩЕСТВУЕТ!!!
-
                     command.ExecuteNonQuery();
 
                 }
-
-                /*
-                     
-                //SqlConnection sqlConnection; обьявлено в начале
-                sqlConnection = new SqlConnection(connectionString);    // Устанавливаем соединение
-                await sqlConnection.OpenAsync();    // Открываем БД в асинхронном режиме
-
-                SqlCommand command = new SqlCommand("INSERT INTO [Colors] (Color, ExtenderProc, YellowProc, RedProc, RubinProc, RadominProc, OrangeProc, PinkProc, VioletProc, BlueProc, GreenProc, BlackProc, WhiteProc, Water, Viscosity, Extender, WhiteBlack) " +
-                                                    "VALUES (@Color, @ExtenderProc, @YellowProc, @RedProc, @RubinProc, @RadominProc, @OrangeProc, @PinkProc, @VioletProc, @BlueProc, @GreenProc, @BlackProc, @WhiteProc, @Water, @Viscosity, @Extender, @WhiteBlack)", sqlConnection);
-                command.Parameters.AddWithValue("Color", textBox13.Text);   // Добавить со значением Color из textBox13.text
-                command.Parameters.AddWithValue("ExtenderProc", (float)Convert.ToDouble(textBox21.Text));
-                command.Parameters.AddWithValue("YellowProc", (float)Convert.ToDouble(textBox1.Text));
-                command.Parameters.AddWithValue("RedProc", (float)Convert.ToDouble(textBox2.Text));
-                command.Parameters.AddWithValue("RubinProc", (float)Convert.ToDouble(textBox3.Text));
-                command.Parameters.AddWithValue("RadominProc", (float)Convert.ToDouble(textBox4.Text));
-                command.Parameters.AddWithValue("OrangeProc", (float)Convert.ToDouble(textBox5.Text));
-                command.Parameters.AddWithValue("PinkProc", (float)Convert.ToDouble(textBox6.Text));
-                command.Parameters.AddWithValue("VioletProc", (float)Convert.ToDouble(textBox7.Text));
-                command.Parameters.AddWithValue("BlueProc", (float)Convert.ToDouble(textBox8.Text));
-                command.Parameters.AddWithValue("GreenProc", (float)Convert.ToDouble(textBox9.Text));
-                command.Parameters.AddWithValue("BlackProc", (float)Convert.ToDouble(textBox10.Text));
-                command.Parameters.AddWithValue("WhiteProc", (float)Convert.ToDouble(textBox11.Text));
-                command.Parameters.AddWithValue("Water", (float)Convert.ToDouble(textBox12.Text));
-                command.Parameters.AddWithValue("Viscosity", (float)Convert.ToDouble(textBox26.Text));
-                command.Parameters.AddWithValue("Extender", comboBox1.SelectedItem);
-                command.Parameters.AddWithValue("WhiteBlack", comboBox2.SelectedItem);
-
-                //ДОБАВИТЬ ПРОВЕРКУ, ЧТО РЕЦЕПТ С ТАКИМ ИМЕНЕМ СУЩЕСТВУЕТ!!!
-
-                await command.ExecuteNonQueryAsync();
-
-                if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)     // Чтобы не потерять данные при выходе. Проверяем открыто ли соединение и закрываем его
-                    sqlConnection.Close();
-                    */
+                MessageBox.Show("Пантон сохранен в БД!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
         }
 
@@ -516,15 +526,14 @@ namespace GofromirColor
         private void btnSearch_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            lbl_listbox1.Visible = true;
-            lbl_listbox1.Text = "Выберите пантон:";
+            grBox_pr.Text = "Выберите пантон:";
 
             tf_listbox = true;
 
 
             if (txtGRPanton.Text == "")
             {
-                MessageBox.Show("Заполните поле 'Пантон'", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Заполните поле 'Пантон'", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -569,7 +578,8 @@ namespace GofromirColor
         private void btnCalculate_Click(object sender, EventArgs e)   // async
         {
             tf_listbox = false;
-            lbl_listbox1.Text = "Рецепт:";
+            grBox_pr.Text = "Рецепт:";
+
             listBox1.Items.Clear(); // Очистка ListBox перед выводом новых данных
             lblErrT0.Text = "Внимание! ";   // Подготовка информационного lblErrT0
             lblErrT0.Visible = false;
@@ -768,7 +778,7 @@ namespace GofromirColor
                                     
             
         }
-
+        /*
         private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             printDialog1.Document = printDocument1;
@@ -783,14 +793,30 @@ namespace GofromirColor
             {
                 this.printDocument1.Print();
             }
-        }
+        }*/
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             lblErrT0.Text = "Внимание! ";   // Подготовка информационного lblErrT0
             lblErrT0.Visible = false;
 
-            if (txtGRPanton.Text == "") // Проверка полей txtGRPanton + txtGRWeight (вес)
+            // Все поля во вкладке корректировка делаем белыми
+            txtKRBlack.BackColor = Color.White;
+            txtKRViscosity.BackColor = Color.White;
+            txtKRExtenderKg.BackColor = Color.White;
+            txtKRYellow.BackColor = Color.White;
+            txtKRRed.BackColor = Color.White;
+            txtKRRubin.BackColor = Color.White;
+            txtKRRadomin.BackColor = Color.White;
+            txtKROrange.BackColor = Color.White;
+            txtKRPink.BackColor = Color.White;
+            txtKRViolet.BackColor = Color.White;
+            txtKRBlue.BackColor = Color.White;
+            txtKRGreen.BackColor = Color.White;
+            txtKRWhite.BackColor = Color.White;
+            txtKRWater.BackColor = Color.White;
+
+                if (txtGRPanton.Text == "") // Проверка полей txtGRPanton + txtGRWeight (вес)
             {
                 lblErrT0.Text += "Заполните поле 'Пантон'. ";
                 lblErrT0.Visible = true;
@@ -825,6 +851,12 @@ namespace GofromirColor
                     {
                         tabPage3.Parent = tabControl1;  // Показывает вкладка "Корректировать рецепт"
                         tabControl1.SelectedIndex = 3;  // Переносим на вкладку
+
+                        //Скрываем другие tabPage0,1,2
+                        tabPage1.Parent = null;
+                        tabPage2.Parent = null;
+                        tabPage4.Parent = null;
+
 
                         // Заполняем текстовые поля данными из полученного рецепта
                         txtKRPanton.Text = txtGRPanton.Text;
@@ -878,10 +910,7 @@ namespace GofromirColor
 
                 txtKRPantonNew.Text = txtKRPanton.Text + "/Р-" + txtKRViscosity.Text;
 
-
-
-
-
+                                             
             }
         }
 
@@ -1118,7 +1147,7 @@ namespace GofromirColor
             else txtKRRadomin.BackColor = Color.White;
 
         }
-
+ 
         private void txtKROrange_Leave(object sender, EventArgs e)
         {
             if (txtKROrange.Text == String.Empty)
@@ -1287,6 +1316,22 @@ namespace GofromirColor
 
         private void btnKRSave_Click(object sender, EventArgs e)
         {
+            // Проверка были ли какие-либо измененя в рецепте. Если нет. То сохранить не даст. + Информационное сообщение.
+            
+            if (txtKRBlack.BackColor != Color.Red && txtKRViscosity.BackColor != Color.Red &&
+                txtKRExtenderKg.BackColor != Color.Red && txtKRYellow.BackColor != Color.Red &&
+                txtKRRed.BackColor != Color.Red && txtKRRubin.BackColor != Color.Red &&
+                txtKRRadomin.BackColor != Color.Red && txtKROrange.BackColor != Color.Red &&
+                txtKRPink.BackColor != Color.Red && txtKRViolet.BackColor != Color.Red &&
+                txtKRBlue.BackColor != Color.Red && txtKRGreen.BackColor != Color.Red &&
+                txtKRWhite.BackColor != Color.Red && txtKRWater.BackColor != Color.Red)
+                    {
+                        MessageBox.Show("Рецепт не был изменен.", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+
+
             // Переменные для пересчета
             double ft_txtKRExtenderKg = 0;
             double ft_txtKRYellow = 0;
@@ -1304,7 +1349,7 @@ namespace GofromirColor
 
             if (Convert.ToSingle(txtKRViscosity.Text) <= 0)
             {
-                MessageBox.Show("Введите полученную вязкость!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Введите полученную вязкость!", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -1374,7 +1419,14 @@ namespace GofromirColor
                 command.ExecuteNonQuery();
             }
 
-            MessageBox.Show("Рецепт корректированного пантона внесен в БД. Имя - " + txtKRPantonNew.Text, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Рецепт корректированного пантона внесен в БД. Имя - " + txtKRPantonNew.Text, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //Открываем tabPage0,1,2
+            tabPage1.Parent = tabControl1;
+            tabPage2.Parent = tabControl1;
+            tabPage4.Parent = tabControl1;
+
+
             tabControl1.SelectedIndex = 0;      // Переносим на вкладку "Готовить рецепт"
             tabPage3.Parent = null;             // Скрываем элемент "Корректировка рецепта"
 
@@ -1676,91 +1728,33 @@ namespace GofromirColor
             if (header == null || !header.Equals(indexStr))
             this.dataGridView1.Rows[index].HeaderCell.Value = indexStr;
         }
-    }
-}
 
-/*
- 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using System.Management;
-using System.IO;
-
-
-namespace Protection
-{
-    public partial class Form1 : Form
-    {
-        public Form1()
+        private void btnKRClose_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
+            //Открываем tabPage0,1,2
+            tabPage1.Parent = tabControl1;
+            tabPage2.Parent = tabControl1;
+            tabPage4.Parent = tabControl1;
+
+
+            tabControl1.SelectedIndex = 0;      // Переносим на вкладку "Готовить рецепт"
+            tabPage3.Parent = null;             // Скрываем элемент "Корректировка рецепта"
         }
 
-        string DiscSN_id = "SN193308905319";
-        string CPUInfo_id = "BFEBFBFF000406C4";
-        string VideoRam_id = "1073741824";
-
-
-        private string CPUInfo()
+        private void btnPrint_Click(object sender, EventArgs e)
         {
-            var mds = new ManagementObjectSearcher("Select ProcessorId From Win32_processor");  // Переменной присваивается неявный тип
-            string processor_id = "";
-            foreach (ManagementObject mo in mds.Get())    // Перебор массива значений mds.Get()
+            printDialog1.Document = printDocument1;
+            string strText = "";
+            foreach (object x in listBox1.Items)
             {
-                processor_id = mo["ProcessorId"].ToString();      // Возвращает значение ProcessorId в виде строки.
-                break;
+                strText = strText + x.ToString() + "\n";
             }
-            return processor_id;              
-        }
-                       
-        private string DiscSN()
-        {
-            //("root\\CIMV2", "SELECT * FROM Win32_DiskDrive"); ---с правами доступа
-            var mds = new ManagementObjectSearcher("SELECT * FROM Win32_DiskDrive");  // Переменной присваивается неявный тип
-            string discSN = "";
-            foreach (ManagementObject mo in mds.Get())    // Перебор массива значений mds.Get()
+
+            myReader = new StringReader(strText);
+            if (printDialog1.ShowDialog() == DialogResult.OK)
             {
-                discSN = mo["SerialNumber"].ToString();      // Возвращает значение Disc SerialNumber  в виде строки.
-                break;
+                this.printDocument1.Print();
             }
-            return discSN;
-        }
-
-        private string VideoRam()
-        {
-            var mds = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");  // Переменной присваивается неявный тип
-            string videoRam = "";
-            foreach (ManagementObject mo in mds.Get())    // Перебор массива значений mds.Get()
-            {
-                videoRam = mo["AdapterRAM"].ToString();      // Возвращает значение AdapterRAM в виде строки.
-                break;
-            }
-            return videoRam;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            textBox1.Text = CPUInfo();
-            textBox3.Text = DiscSN();
-            textBox4.Text = VideoRam();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //if (CPUInfo_id != CPUInfo() || DiscSN_id != DiscSN() || VideoRam_id != VideoRam())
-             //   this.Close();
-
         }
     }
 }
-
-
-*/
